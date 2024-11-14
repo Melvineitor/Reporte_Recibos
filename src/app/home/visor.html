@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor de Imágenes con Zoom</title>
+  <style>
+    /* Contenedor centrado */
+    body, html {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #333;
+    }
+
+    /* Estilo de la imagen con capacidad de zoom */
+    .zoomable {
+      max-width: 90%;
+      max-height: 90%;
+      transition: transform 0.25s ease; /* Animación de zoom */
+    }
+
+    /* Zoom por defecto */
+    body.zoom-in .zoomable {
+      transform: scale(1.5); /* Nivel de zoom */
+      cursor: zoom-out;
+    }
+
+    /* Cursor de zoom inicial */
+    .zoomable {
+      cursor: zoom-in;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="assets/recibo-enero.png" alt="Imagen" class="zoomable" id="imageViewer">
+
+  <script>
+    // Cargar la imagen desde los parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const imageUrl = urlParams.get("src");
+    const imageElement = document.getElementById("imageViewer");
+    if (imageUrl) imageElement.src = imageUrl;
+
+    // Alternar zoom al hacer clic en la imagen
+    imageElement.addEventListener("click", function () {
+      document.body.classList.toggle("zoom-in");
+    });
+  </script>
+</body>
+
+</html>
