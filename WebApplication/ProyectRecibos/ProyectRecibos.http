@@ -1,0 +1,6 @@
+@ProyectRecibos_HostAddress = http://localhost:5153
+
+GET {{ProyectRecibos_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
